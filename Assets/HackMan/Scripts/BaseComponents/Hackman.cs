@@ -5,7 +5,13 @@ using Hackman_GD07;
 
 public class Hackman : BaseGridMovement
 {
-     protected override void Update()
+    private Rigidbody rigidBody;
+
+    private void Awake()
+    {
+        rigidBody = GetComponent<Rigidbody>();
+    }
+    protected override void Update()
     {
         //calling 'base' calls the virtual method, first
         //we want to get player input first,BEFORE moving!
@@ -25,10 +31,13 @@ public class Hackman : BaseGridMovement
         {
             currentInputDirection = new IntVector2(0,1);
         }
+        
 
         Debug.Log($"X:{currentInputDirection.x}|y:{currentInputDirection.y}");
         base.Update();
         //Debug.Log("overriding method...");
         //it will print "base methods.." then "overriding methods..."
+
     }
+
 }

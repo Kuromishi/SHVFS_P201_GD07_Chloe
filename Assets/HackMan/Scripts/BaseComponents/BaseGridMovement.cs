@@ -11,20 +11,26 @@ public class BaseGridMovement : BaseGridObject
     protected IntVector2 currentInputDirection;
     private IntVector2 previousInputDirection;
 
+    private void Start()
+    {
+        targetGridPosition = GridPosition;
+    }
     protected virtual void Update()
     {
         //what if we have some very important logic here, that we NEED to run
         //Create an extension method to help...
         //Debug.Log("overriding method...");
-       if(transform.position == targetGridPosition.ToVector3())
+       
+       if(transform.position == targetGridPosition.ToVector3()) //transform.position 移动过程中
         {
-            progressToTarget = 0f;
-            GridPosition = targetGridPosition;
+            progressToTarget = 0f; //Lerp
+            GridPosition = targetGridPosition; //GridPosition为上一个点
         }
         //or  if(transform.position.ToIntVector2() == targetGridPosition)
         //or  if( ExtensionMethods.ToIntVector2(transform.position) )==  targetGridPosition) 
 
        //if we set a new target AND our current input is Valid
+       //两种情况，面前没有墙，或者输入方向没有墙，如果有的话就按原来路径前进
        if(GridPosition == targetGridPosition 
             && LevelGeneratorSystem.Grid[Mathf.Abs(targetGridPosition.y + currentInputDirection.y),targetGridPosition.x+currentInputDirection.x]!=1)
         {
@@ -35,10 +41,12 @@ public class BaseGridMovement : BaseGridObject
        else if (GridPosition == targetGridPosition
             && LevelGeneratorSystem.Grid[Mathf.Abs(GridPosition.y + previousInputDirection.y), GridPosition.x + previousInputDirection.x] != 1)
         {
-            targetGridPosition += previousInputDirection;
+            targetGridPosition += previousInputDirection; //原来的路径
         }
         if (GridPosition == targetGridPosition) return;
         progressToTarget += MovementSpeed * Time.deltaTime;
+
+        transform.position = Vector3.Lerp(transform.position, targetGridPosition.ToVector3(), progressToTarget);
     }
 
 }
