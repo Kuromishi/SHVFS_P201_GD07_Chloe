@@ -17,19 +17,19 @@ public class Hackman : BaseGridMovement
         //we want to get player input first,BEFORE moving!
         if(Input.GetKeyDown(KeyCode.DownArrow))
         {
-            currentInputDirection = new IntVector2(0, -1);
+            currentInputDirection = IntVector2.down;
         }
         if (Input.GetKeyDown(KeyCode.LeftArrow))
         {
-            currentInputDirection = new IntVector2(-1,0);
+            currentInputDirection = IntVector2.left;
         }
         if (Input.GetKeyDown(KeyCode.RightArrow))
         {
-            currentInputDirection = new IntVector2(1,0);
+            currentInputDirection = IntVector2.right;
         }
         if (Input.GetKeyDown(KeyCode.UpArrow))
         {
-            currentInputDirection = new IntVector2(0,1);
+            currentInputDirection = IntVector2.up;
         }
         
 
