@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Hackman_GD07;
 
-public class BaseGridMovement : BaseGridObject
+public class MovementComponent : BaseGridObject
 {
     public float MovementSpeed;
     protected IntVector2 targetGridPosition;

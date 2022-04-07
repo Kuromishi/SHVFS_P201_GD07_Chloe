@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Hackman_GD07;
 
-public class Hackman : BaseGridMovement
+public class PlayerInputComponent : MovementComponent
 {
     private Rigidbody rigidBody;
 
