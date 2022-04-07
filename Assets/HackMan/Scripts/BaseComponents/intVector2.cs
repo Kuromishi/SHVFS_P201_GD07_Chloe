@@ -3,7 +3,8 @@ using System;
 
 namespace Hackman_GD07
 {
-    public class IntVector2 //struct is value types
+    [Serializable]
+    public struct IntVector2 //struct is value types
     {
         public int x;
         public int y;
@@ -17,10 +18,10 @@ namespace Hackman_GD07
         public static IntVector2 right => new IntVector2(1, 0);
 
 
-        public IntVector2(int x, int y)
+        public IntVector2(int _x, int _y)
         {
-            this.x = x;
-            this.y = y;
+            this.x = _x;
+            this.y = _y;
         }
         public static IntVector2 operator + (IntVector2 v1, IntVector2 v2)
         {

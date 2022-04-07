@@ -26,8 +26,9 @@ public class Ghost : BaseGridMovement
             {
                 var potentialTargetPosition = targetGridPosition + movementDirection;
 
-                if (!potentialTargetPosition.IsWall()) continue;
-                   
+                if (potentialTargetPosition.IsWall()) continue;
+                  
+                //防止球来回移动，所以移动方向不能是先前方向的反方向
                 if (movementDirection != -currentInputDirection) //not equal to the negative
                 {
                     possibleDirections.Add(movementDirection);

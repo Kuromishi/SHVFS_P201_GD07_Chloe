@@ -33,7 +33,7 @@ public class Hackman : BaseGridMovement
         }
         
 
-        Debug.Log($"X:{currentInputDirection.x}|y:{currentInputDirection.y}");
+        //Debug.Log($"X:{currentInputDirection.x}|y:{currentInputDirection.y}");
         base.Update();
         //Debug.Log("overriding method...");
         //it will print "base methods.." then "overriding methods..."
