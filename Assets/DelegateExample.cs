@@ -15,7 +15,7 @@ public class DelegateExample : MonoBehaviour
     public delegate void MeDelegate();
     public delegate bool MeDelegateInt(int n); //Take int, return bool
     public delegate int MeDelegateReturnInt();
-    public delegate T MeDelegateGeneric<T>();  //signature: [return xx, take xxx]   
+    public delegate T MeDelegateGeneric<T>();  //signature: [take xx, return xxx]
     //take no argument, return T
 
     public void OnEnable()
@@ -141,7 +141,7 @@ public class DelegateExample : MonoBehaviour
         //    Debug.Log(value);
         //}
 
-        //The last type is return type
+        // The last one(string↓) of Func is their return type
         //// Func<int, string> meDelegate = SquareMessage;
         // Func<int, int,string> meDelegate = MultiplyAndReturnMessage;
         // Debug.Log(meDelegate(5, 20));
@@ -155,7 +155,7 @@ public class DelegateExample : MonoBehaviour
         //Return nothing: Use Action.
 
         //Difference between delegate and events...
-        //An event is a delegate with two restrictions: you can't assign to it directly, and you can;t invoke it directly
+        //An event is a delegate with two restrictions: you can't assign to it directly, and you can't invoke it directly
         //Action myAction = ATrainsAComin;
         //myAction += ATrainsAComin;
         //myAction = null;
@@ -271,6 +271,8 @@ public class DelegateExample : MonoBehaviour
         {
             //if (TrainsAComing != null)
                 TrainsAComing?.Invoke();
+            //如果问号前面的是null，则该表达式直接返回null. 如果不为空，则继续进行下一步，通过点语法糖获取属性。
+
         }
     }
 }

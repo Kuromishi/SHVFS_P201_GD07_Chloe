@@ -2,9 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Hackman_GD07;
+using UnityEngine.SceneManagement;
 
 public class PlayerInputComponent : MovementComponent
 {
+    public bool canCollect;//turning this thing on and off and it becomes a state Nightmare!
+    public bool CanBeDamage;
+
     private Rigidbody rigidBody;
 
     private void Awake()
@@ -38,6 +42,33 @@ public class PlayerInputComponent : MovementComponent
         //Debug.Log("overriding method...");
         //it will print "base methods.." then "overriding methods..."
 
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        //Write your logic for winning/losing
+        //Destroy the pill
+        //Check if all pills are gone + reload the level if so
+        //Kill Hackman if it's the ghost
+
+        if (other.GetComponent<Pill>() != null)
+        {
+            Destroy(other.gameObject);
+
+            //Will be destroyed next frame, so we check length of 1
+            if(FindObjectsOfType<Pill>().Length <= 1)
+            {
+                Debug.Log("You win!");
+                SceneManager.LoadScene("Level");
+            }
+        }
+
+        if (other.GetComponent<EnemyInputComponent>() != null)
+        {
+            Debug.Log("You Lose!");
+            SceneManager.LoadScene("Level");
+
+        }
     }
 
 }
