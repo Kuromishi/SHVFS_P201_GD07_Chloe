@@ -12,4 +12,5 @@ public class CollectorComponent : MonoBehaviour
             Evently.Instance.Publish(new CollectionEvent(other.GetComponent<CollectableComponent>()));
         }
     }
+
 }

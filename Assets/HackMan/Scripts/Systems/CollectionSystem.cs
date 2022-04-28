@@ -15,6 +15,12 @@ public class CollectionSystem : Singleton<CollectionSystem>
     private void OnCollected(CollectionEvent evt)
     {
         Destroy(evt.Collectable.gameObject);
+
+        if(FindObjectsOfType<CollectableComponent>().Length <= 1)
+        {
+            Evently.Instance.Publish(new GameoverEvent(true)); //You win
+        }
+
     }
 
 }
