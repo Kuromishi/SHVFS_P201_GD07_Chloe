@@ -77,7 +77,7 @@ public class AppDataSystem
 
     public static List<T> LoadAll<T>()
     {
-        var directoryPath = $"{Application.dataPath}/StreamingAssets/{typeof(T).Name}";
+        var directoryPath = $"{Application.dataPath}/StreamingAssets/" + typeof(T).Name;
 
         if (!Directory.Exists(directoryPath))
         {
@@ -85,13 +85,13 @@ public class AppDataSystem
             return new List<T>();
         }
 
-        var filePaths = Directory.GetFiles(directoryPath, "*.json");
+        var fullfilePaths = Directory.GetFiles(directoryPath, "*.json");
 
         var fileDataList = new List<T>();
 
-        foreach (var filePath in filePaths)
+        foreach (var fullfilePath in fullfilePaths)
         {
-            var serializedData = File.ReadAllText(filePath);
+            var serializedData = File.ReadAllText(fullfilePath);
             var data = JsonConvert.DeserializeObject<T>(serializedData);
 
             if (!fileDataList.Contains(data))

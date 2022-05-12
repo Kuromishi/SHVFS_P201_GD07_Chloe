@@ -30,7 +30,7 @@ public class LevelGeneratorSystem : Singleton<LevelGeneratorSystem>
 
     //Instantiate/Generate our level
 
-    protected override void Awake()
+    private void Awake()
     {
         //var level = AppDataSystem.Load<T>(fileName);
         //var fullFilePath = $"{Application.dataPath}/Hackman/StreamingAssets/Level_1.json";
@@ -42,22 +42,35 @@ public class LevelGeneratorSystem : Singleton<LevelGeneratorSystem>
         AnotherLevel();
     }
 
+    //[ContextMenu("Log Grid")]
+    //public void LogGrid()
+    //{
+    //    var obj = JsonConvert.SerializeObject(Grid); //give an object, return a string
+    //    Debug.Log(obj);
+    //}
+
+    //[ContextMenu("Save Level")]
+    //public void SaveLevel()
+    //{
+    //    var obj = JsonConvert.SerializeObject(Grid);
+
     public void AnotherLevel()
     {
         LevelEnd();
 
         while(true)
         {
-            var index = Random.Range(0, levelList.Count);
+            var currentLevelindex = Random.Range(0, levelList.Count);
 
-            if (currentLevel != null && currentLevel == levelList[index]) continue;
-            currentLevel = levelList[index];
+            if (currentLevel != null && currentLevel == levelList[currentLevelindex]) continue;
+            currentLevel = levelList[currentLevelindex];
             break;
         }
 
         LogLevel(currentLevel);
     }
 
+    //===========//
     public void LevelEnd()
     {
         if (!levelObj)
@@ -95,17 +108,7 @@ public class LevelGeneratorSystem : Singleton<LevelGeneratorSystem>
         }
     }
 
-    //[ContextMenu("Log Grid")]
-    //public void LogGrid()
-    //{
-    //    var obj = JsonConvert.SerializeObject(Grid); //give an object, return a string
-    //    Debug.Log(obj);
-    //}
 
-    //[ContextMenu("Save Level")]
-    //public void SaveLevel()
-    //{
-    //    var obj = JsonConvert.SerializeObject(Grid);
         
 
     //    if (!File.Exists(fullFilePath))
