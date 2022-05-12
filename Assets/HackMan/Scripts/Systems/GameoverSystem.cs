@@ -16,7 +16,8 @@ public class GameoverSystem : Singleton<GameoverSystem>
     }
     private void OnGameOver(GameoverEvent evt)
     {
-        Debug.Log(evt.WinOrLose? "You Win!":"You Lose!");
-        SceneManager.LoadScene("Level");
+        //Debug.Log(evt.WinOrLose? "You Win!!":"You Lose!!");
+        //SceneManager.LoadScene("Level");
+        LevelGeneratorSystem.Instance.AnotherLevel();
     }
 }

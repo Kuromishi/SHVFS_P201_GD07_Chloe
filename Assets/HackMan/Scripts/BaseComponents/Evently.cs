@@ -61,7 +61,7 @@ public class Evently
         }
         if (delegates.ContainsKey(e.GetType()))
         {
-            delegates[e.GetType()].DynamicInvoke(e);
+            delegates[e.GetType()].DynamicInvoke(e);//DynamicInvoke needs a parameter
         }
 
     }

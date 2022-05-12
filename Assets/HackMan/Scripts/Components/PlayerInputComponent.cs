@@ -44,31 +44,31 @@ public class PlayerInputComponent : MovementComponent
 
     }
 
-    private void OnTriggerEnter(Collider other)
-    {
-        //Write your logic for winning/losing
-        //Destroy the pill
-        //Check if all pills are gone + reload the level if so
-        //Kill Hackman if it's the ghost
+    //private void OnTriggerEnter(Collider other)
+    //{
+    //    //Write your logic for winning/losing
+    //    //Destroy the pill
+    //    //Check if all pills are gone + reload the level if so
+    //    //Kill Hackman if it's the ghost
 
-        if (other.GetComponent<Pill>() != null)
-        {
-            Destroy(other.gameObject);
+    //    if (other.GetComponent<Pill>() != null)
+    //    {
+    //        Destroy(other.gameObject);
 
-            //Will be destroyed next frame, so we check length of 1
-            if(FindObjectsOfType<Pill>().Length <= 1)
-            {
-                Debug.Log("You win!");
-                SceneManager.LoadScene("Level");
-            }
-        }
+    //        //Will be destroyed next frame, so we check length of 1
+    //        if(FindObjectsOfType<Pill>().Length <= 1)
+    //        {
+    //            Debug.Log("You win!");
+    //            SceneManager.LoadScene("Level");
+    //        }
+    //    }
 
-        if (other.GetComponent<EnemyInputComponent>() != null)
-        {
-            Debug.Log("You Lose!");
-            SceneManager.LoadScene("Level");
+    //    if (other.GetComponent<EnemyInputComponent>() != null)
+    //    {
+    //        Debug.Log("You Lose!");
+    //        SceneManager.LoadScene("Level");
 
-        }
-    }
+    //    }
+    //}
 
 }
